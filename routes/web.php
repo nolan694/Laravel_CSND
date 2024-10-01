@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Character;
 use Illuminate\Support\Facades\Route;
+use Nette\Utils\ArrayList;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,3 +16,15 @@ Route::get('/home', function () {
     return view('home', compact('nom'));
 });
 
+Route::get('/characters', function(){
+    $characters = Character::all() ;
+    //dd($characters);
+    return view('index',compact('characters'));
+
+});
+
+Route::get('/characters/',function(){
+
+
+
+});

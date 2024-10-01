@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
         $c = new Character ;
         $c->price = 20.99  ;
         $c->label = 'zenitsu' ;
+        $c ->desc = 'electrecite' ;
         $c ->birth_date = '2001-11-07' ;
         $c ->image_path = 'https://demon-slayer.fr/wp-content/uploads/2022/07/zenitsu-demon-slayer-png.png' ;
         $c -> save() ;
