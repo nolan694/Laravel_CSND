@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('characters',  function (Blueprint $table) {
+            $table->id();
             $table->float('price');
             $table->string('label');
             $table->string('desc');
