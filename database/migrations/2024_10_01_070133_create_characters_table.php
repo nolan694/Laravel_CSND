@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('label');
             $table->string('desc');
             $table->date('birth_date');
-            $table->string('image_path') -> default('avatar.png');
+            $table->string('image_path') -> default('img/avatar.png');
 
             $table->timestamps();
         });
