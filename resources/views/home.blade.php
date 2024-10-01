@@ -1,1 +1,3 @@
-<h1>Bonjour</h1>
+<?php $nom = 'nolan' ; ?>
+<h1>Bonjour {{$nom}}</h1>
+

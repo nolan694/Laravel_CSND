@@ -7,6 +7,10 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return view('home');
+    $nom = 'Nolan' ;
+    // return view(view: 'home', [
+    //     'nom' => $nomutilisateur,
+    // ]);
+    return view('home', compact('nom'));
 });
 
