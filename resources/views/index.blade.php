@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>All characters</title>
-    <link rel="stylesheet" href="css/tab.css">
-</head>
-<body>
+@extends('layout')
+
+@section('title', content: 'all characters')
+
+@section('main')
+
     <table>
         <thead>
             <tr>
@@ -23,9 +22,10 @@
                 <td> {{$character->price}}</td>
                 <td> {{$character->desc}}</td>
                 <td> {{$character->birth_date}}</td>
+                <img src="{{$character -> image_path}}" alt="Texte alternatif"  height="150">
+                <td><a href="/characters/{{$character -> id}}">More info</a></td>
             </tr>
             @endforeach
         </tbody>
     </table>
-</body>
-</html>
+@endsection

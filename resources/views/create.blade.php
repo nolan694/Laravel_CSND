@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>formulaire pour creer un personnage</title>
-</head>
-<body>
+@extends('layout')
+
+@section('title', 'création character')
+
+    @section('main')
     
     <form action="/characters" method="post">
     @csrf
@@ -24,5 +23,4 @@
 
         <button>valider</button>
     </form>
-</body>
-</html>
+    @endsection
