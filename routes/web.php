@@ -7,6 +7,10 @@ use Nette\Utils\ArrayList;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/characters/{id}/edit',function($id){
+    $character = Character::find($id);
+    return view('edit', compact('character'));
+});
 
 Route::get('/characters/create',function(){
     return view('create');
