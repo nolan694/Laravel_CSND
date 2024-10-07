@@ -1,0 +1,97 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+thead th {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+td img {
+    display: block;
+    margin: 10px auto;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#delete {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#edit {
+    background-color: #22cb25;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;  
+}
+
+
+button:hover {
+    background-color: #c0392b;
+}
+
+form {
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody tr {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+
+    tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        text-align: right;
+    }
+
+    tbody td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+}

@@ -4,8 +4,10 @@
 
     @section('main')
     
-    <form action="/characters" method="post">
+    <form action="/characters/{{$character -> id}}" method="post">
     @csrf
+    @method('patch')
+
         <label for="label">label :</label>
         <input type="text" id="label" name="label" value ="{{$character -> label}}" required>
 

@@ -2,8 +2,12 @@
 
 @section('title', content: 'all characters')
 
-@section('main')
 
+
+@section('main')
+<div>
+    <a href="/characters/create"><button id = "edit">create</button></a>
+</div>
     <table>
         <thead>
             <tr>
@@ -12,6 +16,9 @@
                 <th> Price</th>
                 <th> Description</th>
                 <th> Birth Date</th>
+                <th> Image</th>
+                <th> Autre</th>
+
             </tr>
         </thead>
         <tbody>
@@ -22,8 +29,24 @@
                 <td> {{$character->price}}</td>
                 <td> {{$character->desc}}</td>
                 <td> {{$character->birth_date}}</td>
-                <img src="{{$character -> image_path}}" alt="Texte alternatif"  height="150">
-                <td><a href="/characters/{{$character -> id}}">More info</a></td>
+                <td><img src="{{$character -> image_path}}"  height="150"></td>
+                <td>
+                    <div>
+                        <a href="/characters/{{$character -> id}}">More info</a>
+                    </div>
+
+                    <div>
+                        <form action="/characters/{{$character -> id}}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button id = "delete">delete</button>
+                        </form>
+                    </div>
+
+                    <div>
+                        <a href="/characters/{{$character -> id}}/edit"><button id = "edit">edit</button></a>
+                    </div>
+                </td>
             </tr>
             @endforeach
         </tbody>

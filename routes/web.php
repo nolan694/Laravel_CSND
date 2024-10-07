@@ -30,14 +30,43 @@ Route::get('/characters', function(){
     return view('index',compact('characters'));
 
 });
+Route::patch('characters/{id}', function($id){
+    $c = Character::find($id);
+    $c -> label = request('label');
+    $c -> price = request('price');
+    $c -> desc = request('description');
+    if(request('image'))  $c -> image_path = request('image');
+    $c -> birth_date = request('date');
+    $c -> save();
+    
+    return redirect('/characters/'.$c -> id);
+
+});
+
+Route::delete('/characters/{id}', function($id){
+    $c = Character::find($id);
+    $c->delete();
+    return redirect('/characters')->with('success', 'Character deleted successfully');
+});
 
 Route::get('/characters/{id}', function($id){
     $character = Character::find($id);
     return view('show',compact('character'));
 });
-
 Route::post('/characters', function(){
     //dd(request('price'));
+
+    // valider la ressource
+    $validation = request() -> validate([
+        'label' => 'required|string|max:19',
+        'price' => 'required|decimal:0,2',
+        'description' => 'required|string',
+        'image' => 'string',
+        'date' => 'required|date',
+
+    ]);
+
+    // créer la nouvelle ressource
     $c = new Character;
     $c -> label = request('label');
     $c -> price = request('price');
