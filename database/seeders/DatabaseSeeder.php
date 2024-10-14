@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $c ->desc = "pilier de l'eau"  ;
         $c ->birth_date = '2001-08-20'  ;
         $c ->image_path = 'https://static.wikia.nocookie.net/kimetsu-no-yaiba/images/5/55/Water_Breathing_%28Zenshuchuten%29-1-.png/revision/latest?cb=2020
-        0618200015&path-prefix=fr'  ;
+        0618200015&path-prefix=fr'  ;     
         $c -> save() ;
 
         $c = new Character ;

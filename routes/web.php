@@ -1,20 +1,19 @@
 <?php
 
+use App\Http\Controllers\ChaaracterController;
 use App\Models\Character;
 use Illuminate\Support\Facades\Route;
 use Nette\Utils\ArrayList;
 
+
+Route::resource('characters', ChaaracterController::class);
+
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/characters/{id}/edit',function($id){
-    $character = Character::find($id);
-    return view('edit', compact('character'));
-});
+// Route::get('/characters/{id}/edit',action: [ChaaracterController::class, 'edit']);
 
-Route::get('/characters/create',function(){
-    return view('create');
-});
+// Route::get('/characters/create',[ChaaracterController::class, 'create']);
 
 Route::get('/home', function () {
     $nom = 'Nolan' ;
@@ -24,56 +23,21 @@ Route::get('/home', function () {
     return view('home', compact('nom'));
 });
 
-Route::get('/characters', function(){
-    $characters = Character::all() ;
-    //dd($characters);
-    return view('index',compact('characters'));
+// Route::get('/characters', [ChaaracterController::class, 'index']);
 
-});
-Route::patch('characters/{id}', function($id){
-    $c = Character::find($id);
-    $c -> label = request('label');
-    $c -> price = request('price');
-    $c -> desc = request('description');
-    if(request('image'))  $c -> image_path = request('image');
-    $c -> birth_date = request('date');
-    $c -> save();
-    
-    return redirect('/characters/'.$c -> id);
+// Route::patch('characters/{id}', [ChaaracterController::class, 'update']);
 
-});
+// Route::delete('/characters/{id}', [ChaaracterController::class, 'delete']);
 
-Route::delete('/characters/{id}', function($id){
-    $c = Character::find($id);
-    $c->delete();
-    return redirect('/characters')->with('success', 'Character deleted successfully');
-});
-
-Route::get('/characters/{id}', function($id){
-    $character = Character::find($id);
-    return view('show',compact('character'));
-});
-Route::post('/characters', function(){
-    //dd(request('price'));
-
-    // valider la ressource
-    $validation = request() -> validate([
-        'label' => 'required|string|max:19',
-        'price' => 'required|decimal:0,2',
-        'description' => 'required|string',
-        'image' => 'string',
-        'date' => 'required|date',
-
-    ]);
-
-    // créer la nouvelle ressource
-    $c = new Character;
-    $c -> label = request('label');
-    $c -> price = request('price');
-    $c -> desc = request('description');
-    if(request('image'))  $c -> image_path = request('image');
-    $c -> birth_date = request('date');
-    $c -> save();
-
-    return redirect('/characters/'.$c -> id);
+// Route::get('/characters/{id}', [ChaaracterController::class, 'show']);
+ 
+// Route::post('/characters', [ChaaracterController::class, 'store']);
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });
