@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Nette\Utils\ArrayList;
 
 
-Route::resource('characters', ChaaracterController::class);
+Route::resource('/characters', ChaaracterController::class);
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +21,11 @@ Route::get('/home', function () {
     //     'nom' => $nomutilisateur,
     // ]);
     return view('home', compact('nom'));
+});
+
+Route::get('/test', function(){
+    $character = Character::find(1);
+    dump($character -> user);
 });
 
 // Route::get('/characters', [ChaaracterController::class, 'index']);

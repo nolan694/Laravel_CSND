@@ -17,6 +17,7 @@
                 <th> Description</th>
                 <th> Birth Date</th>
                 <th> Image</th>
+                <th> name</th>
                 <th> Autre</th>
 
             </tr>
@@ -30,6 +31,8 @@
                 <td> {{$character->desc}}</td>
                 <td> {{$character->birth_date}}</td>
                 <td><img src="{{$character -> image_path}}"  height="150"></td>
+                <td> {{$character-> user->name}}</td>
+
                 <td>
                     <div>
                         <a href="/characters/{{$character -> id}}">More info</a>

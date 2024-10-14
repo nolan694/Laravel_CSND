@@ -6,6 +6,7 @@
 @section('main')
 
 <ul>
+    <li>{{ $character-> user->name}}</li>
     <li>{{ $character -> label}}</li>
     <li>{{ $character -> price}}</li>
     <li>{{ $character -> desc}}</li>

@@ -14,8 +14,8 @@ class ChaaracterController extends Controller
     return view('index',compact('characters'));
     }
 
-    public function show(int $character){
-        return view('edit', compact('character'));
+    public function show(Character $character){
+        return view('show', compact('character'));
     }
     public function create(){
         return view('create');
@@ -45,11 +45,11 @@ class ChaaracterController extends Controller
         
     }
 
-    public function edit($character){
+    public function edit(Character $character){
         return view('edit', compact('character'));
     }
 
-    public function update($character){
+    public function update(Character $character){
         $character -> label = request('label');
         $character -> price = request('price');
         $character -> desc = request('description');
@@ -58,10 +58,10 @@ class ChaaracterController extends Controller
         $character -> birth_date = request('date');
         $character -> save();
     
-    return redirect('/characters/'.$c -> id);
+    return redirect('/characters/'.$character -> id);
     }
 
-    public function destroy($character){
+    public function destroy(Character $character){
         $character->delete();
         return redirect('/characters')->with('success', 'Character deleted successfully');
     }
